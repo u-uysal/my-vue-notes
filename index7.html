@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vue-7</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+
+    <style></style>
+  </head>
+  <body>
+    <div id="app">
+      <ul>
+        <li v-for="item in list">{{item}}</li>
+      </ul>
+      <hr />
+      <!-- rakamsal sıralama -->
+      <ul>
+        <li v-for="item in 4">{{item}}</li>
+      </ul>
+      <hr />
+      <div v-for="(value,key) in personalData">
+        <strong>{{key}}</strong> : <span>{{value}}</span>
+      </div>
+      <hr />
+      <input type="text" v-model="quantity" />
+      <ul>
+        <li v-for="personel in personelList">
+          <p>{{personel.name}}</p>
+          <p>{{personel.age}}</p>
+
+          <!-- çıkarmak için 1.yol -->
+          <!--  <button @click="personel.age = personel.age-quantity">min</button> -->
+
+          <!-- 2.yol -->
+          <!-- disable etme şarta bağlı -->
+          <button :disabled="personel.age<25" @click="minNumber(personel)">
+            min
+          </button>
+        </li>
+      </ul>
+    </div>
+
+    <script>
+      new Vue({
+        el: "#app",
+        data: {
+          quantity: 0,
+          list: ["first", "second", "third"],
+          personalData: {
+            name: "Ufuk",
+            nickName: "Kodman",
+            age: "28",
+          },
+          personelList: [
+            {
+              name: "Ufuk",
+              nickName: "Kodman",
+              age: "29",
+            },
+            {
+              name: "Uysal",
+              nickName: "Developer",
+              age: "28",
+            },
+          ],
+        },
+        methods: {
+          minNumber(personel) {
+            personel.age = personel.age - this.quantity;
+          },
+        },
+      });
+    </script>
+  </body>
+</html>
