@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vue-6</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+
+    <style></style>
+  </head>
+  <body>
+    <div id="app">
+      <p v-if="showText">show</p>
+
+      <!--    <p v-if="age<18">NOT ALLOWED</p> -->
+      <!--  <p v-else-if="showText">second</p> -->
+
+      <p v-else>hide</p>
+      <button @click="showText = !showText">show/hide</button>
+    </div>
+
+    <script>
+      new Vue({
+        el: "#app",
+        data: {
+          showText: false,
+          age: 1,
+        },
+      });
+    </script>
+  </body>
+</html>
